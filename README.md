@@ -1,9 +1,5 @@
 # JSON Lexer 📄🔍
 
-![Build Status](https://camo.githubusercontent.com/<your-build-status-badge-url>/badge/build-passing-brightgreen)  
-![Tests](https://camo.githubusercontent.com/<your-tests-badge-url>/badge/tests%20%E2%9C%94%EF%B8%8F%20passing-brightgreen)  
-![License](https://camo.githubusercontent.com/<your-license-badge-url>/badge/license-MIT-blue)  
-
 This is a simple lexer written in C that tokenizes JSON files. It breaks down JSON input into tokens, making it easier to parse and process data. 🚀
 
 ---

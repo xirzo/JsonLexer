@@ -8,7 +8,18 @@ project(
 
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_subdirectory(lib)
+add_library(lexer
+    lib/lexer.c
+    lib/lexer.h
+    lib/token.c
+    lib/token.h
+)
+
+target_include_directories(lexer PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/lib")
+
+install(TARGETS lexer DESTINATION lib)
+install(FILES lib/lexer.h lib/token.h DESTINATION include)
+
 add_subdirectory(bin)
 
 enable_testing()

@@ -12,24 +12,24 @@ void lex(const char* test_name, const char* json, const Token* expected,
     init_lexer(&lexer, json);
 
     for (size_t i = 0; i < expected_size; ++i) {
-        Token token = next_token(&lexer);
+        Token* token = next_token(&lexer);
 
-        if (token.type != expected[i].type) {
+        if (token->type != expected[i].type) {
             fprintf(stderr,
                     "Assertion failed in %s at index %zu\n"
                     "expected: %d, got: %d\nCurrent char is %c\n",
-                    test_name, i, expected[i].type, token.type, lexer.current_char);
+                    test_name, i, expected[i].type, token->type, lexer.current_char);
 
-            assert(token.type == expected[i].type);
+            assert(token->type == expected[i].type);
         }
 
-        if (strcmp(token.literal, expected[i].literal) != 0) {
+        if (strcmp(token->literal, expected[i].literal) != 0) {
             fprintf(stderr,
                     "Assertion failed in %s at index %zu\n"
                     "expected: %s, got: %s\n",
-                    test_name, i, expected[i].literal, token.literal);
+                    test_name, i, expected[i].literal, token->literal);
 
-            assert(strcmp(token.literal, expected[i].literal) == 0);
+            assert(strcmp(token->literal, expected[i].literal) == 0);
         }
     }
 }

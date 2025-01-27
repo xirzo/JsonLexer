@@ -30,6 +30,6 @@ void parse_boolean(struct Lexer* lexer, Token* token);
 
 void parse_null(struct Lexer* lexer, Token* token);
 
-Token next_token(struct Lexer* lexer);
+Token* next_token(struct Lexer* lexer);
 
 #endif  // !LEXER_H

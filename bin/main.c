@@ -20,10 +20,10 @@ int main() {
         struct Lexer lexer;
         init_lexer(&lexer, test_jsons[i]);
 
-        Token token;
+        Token* token;
 
-        while ((token = next_token(&lexer)).type != TOKEN_EOF) {
-            printf("  %s, %s\n", token_type_to_string(token.type), token.literal);
+        while ((token = next_token(&lexer))->type != TOKEN_EOF) {
+            printf("  %s, %s\n", token_type_to_string(token->type), token->literal);
         }
 
         printf("\n");

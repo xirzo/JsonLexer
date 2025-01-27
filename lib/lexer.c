@@ -150,66 +150,66 @@ void parse_null(struct Lexer* lexer, Token* token) {
     init_token(token, "null", TOKEN_NULL);
 }
 
-Token next_token(struct Lexer* lexer) {
-    Token token;
+Token* next_token(struct Lexer* lexer) {
+    Token* token;
 
     skip_whitespaces(lexer);
 
     switch (lexer->current_char) {
         case '\0': {
-            init_token(&token, "\0", TOKEN_EOF);
+            init_token(token, "\0", TOKEN_EOF);
             break;
         }
 
         case '{': {
-            init_token(&token, "{", TOKEN_LBR);
+            init_token(token, "{", TOKEN_LBR);
             break;
         }
 
         case '}': {
-            init_token(&token, "}", TOKEN_RBR);
+            init_token(token, "}", TOKEN_RBR);
             break;
         }
 
         case '[': {
-            init_token(&token, "[", TOKEN_LSQBR);
+            init_token(token, "[", TOKEN_LSQBR);
             break;
         }
 
         case ']': {
-            init_token(&token, "]", TOKEN_RSQBR);
+            init_token(token, "]", TOKEN_RSQBR);
             break;
         }
 
         case ':': {
-            init_token(&token, ":", TOKEN_COLON);
+            init_token(token, ":", TOKEN_COLON);
             break;
         }
 
         case ',': {
-            init_token(&token, ",", TOKEN_COMMA);
+            init_token(token, ",", TOKEN_COMMA);
             break;
         }
 
         case '"': {
-            parse_string(lexer, &token);
+            parse_string(lexer, token);
             break;
         }
 
         case 't':
         case 'f': {
-            parse_boolean(lexer, &token);
+            parse_boolean(lexer, token);
             break;
         }
 
         case 'n': {
-            parse_null(lexer, &token);
+            parse_null(lexer, token);
             break;
         }
 
         default: {
             if (isdigit(lexer->current_char)) {
-                parse_number(lexer, &token);
+                parse_number(lexer, token);
                 break;
             }
         }
